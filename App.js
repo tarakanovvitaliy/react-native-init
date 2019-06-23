@@ -1,21 +1,18 @@
 import React, {Component} from 'react'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, ScrollView} from 'react-native'
 
-import HelloComputer from './componets/HelloComputer'
-import HelloText from './componets/HelloText'
-import HelloButton from './componets/HelloButton'
 import Form from './componets/Form'
 
 export default class App extends Component {
   render() {
     return (
-      <View style={{
+      <ScrollView style={{
         flex: 1,
-        marginTop: 44,
-        marginBottom: 44,
+        paddingTop: 44,
+        paddingBottom: 44,
       }}>
         <Form />
-      </View>
+      </ScrollView>
     )
   }
 }

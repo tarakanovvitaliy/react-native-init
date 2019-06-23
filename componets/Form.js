@@ -26,6 +26,7 @@ export default class Form extends Component {
         <Button
           onPress={this.handleSubmit}
           title="Accept"
+          color="grey"
         />
       </View>
     )
@@ -34,7 +35,8 @@ export default class Form extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 22,
-    paddingTop: 0
+    paddingTop: 0,
+    paddingBottom: 77,
   },
   closeButton: {
     fontSize: 44,
