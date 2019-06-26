@@ -4,8 +4,15 @@ import {StyleSheet, View, Text, Button} from 'react-native'
 import FormInput from './FormInput'
 
 export default class Form extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
   handleSubmit = () => {
-    console.log('submit')
+    console.log(this.state)
+  }
+  handleChange = (val, name) => {
+    this.setState({[name]:val})
   }
   render() {
     return (
@@ -13,11 +20,11 @@ export default class Form extends Component {
         <Text style={styles.closeButton}>×</Text>
         <Text style={styles.title}>Sign Up</Text>
 
-        <FormInput placeholder="First Name" />
-        <FormInput placeholder="Last Name" />
-        <FormInput placeholder="Email" />
-        <FormInput placeholder="Phone" />
-        <FormInput placeholder="Create Password" />
+        <FormInput onChange={this.handleChange} placeholder="First Name" name="firstName" />
+        <FormInput onChange={this.handleChange} placeholder="Last Name" name="lastName" />
+        <FormInput onChange={this.handleChange} placeholder="Email" name="email" />
+        <FormInput onChange={this.handleChange} placeholder="Phone" name="phone" />
+        <FormInput onChange={this.handleChange} placeholder="Create Password" name="password" />
 
         <Text style={styles.caption}>
           By clicking Sign up agreed to our <Text style={{textDecorationLine:'underline'}}>Terms and Conditions</Text>

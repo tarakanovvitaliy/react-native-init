@@ -4,10 +4,7 @@ import {StyleSheet, View, TextInput} from 'react-native'
 export default class FormInput extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isFocus: false,
-      text: '',
-    }
+    this.state = {isFocus:false}
   }
   handleFocus = () => {
     this.setState({isFocus:true})
@@ -20,7 +17,7 @@ export default class FormInput extends Component {
       <TextInput
         style={[styles.input, this.state.isFocus ? styles.inputFocus : null]}
         placeholder={this.props.placeholder}
-        onChangeText={text => this.setState({text})}
+        onChangeText={text => this.props.onChange(text, this.props.name)}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
       />
