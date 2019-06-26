@@ -12,12 +12,34 @@ export default class FormInput extends Component {
   handleBlur = () => {
     this.setState({isFocus:false})
   }
+  handleContentType = name => {
+    switch (name) {
+      case 'password' : return 'password'
+      case 'email'    : return 'emailAddress'
+    }
+    return 'none'
+  }
+  handleKeyboardType = name => {
+    switch (name) {
+      case 'email' : return 'email-address'
+      case 'phone' : return 'phone-pad'
+    }
+    return 'default'
+  }
   render() {
+    const {name, placeholder, onChange} = this.props
+    const inputType = this.handleContentType(name)
+    const keyboardType = this.handleKeyboardType(name)
+
     return (
       <TextInput
         style={[styles.input, this.state.isFocus ? styles.inputFocus : null]}
-        placeholder={this.props.placeholder}
-        onChangeText={text => this.props.onChange(text, this.props.name)}
+
+        placeholder={placeholder}
+        textContentType={inputType}
+        keyboardType={keyboardType}
+        
+        onChangeText={text => onChange(text, name)}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
       />

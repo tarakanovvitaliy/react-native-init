@@ -14,18 +14,27 @@ export default class Form extends Component {
   handleChange = (val, name) => {
     this.setState({[name]:val})
   }
+  formInputWrapper = (placeholder, name) => {
+    return (
+      <FormInput 
+        onChange={this.handleChange}
+        placeholder={placeholder}
+        name={name}
+      />
+    )
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.closeButton}>×</Text>
         <Text style={styles.title}>Sign Up</Text>
 
-        <FormInput onChange={this.handleChange} placeholder="First Name" name="firstName" />
-        <FormInput onChange={this.handleChange} placeholder="Last Name" name="lastName" />
-        <FormInput onChange={this.handleChange} placeholder="Email" name="email" />
-        <FormInput onChange={this.handleChange} placeholder="Phone" name="phone" />
-        <FormInput onChange={this.handleChange} placeholder="Create Password" name="password" />
-
+        {this.formInputWrapper('First Name', 'firstName')}
+        {this.formInputWrapper('Last Name', 'lastName')}
+        {this.formInputWrapper('Email', 'email')}
+        {this.formInputWrapper('Phone', 'phone')}
+        {this.formInputWrapper('Create Password', 'password')}
+        
         <Text style={styles.caption}>
           By clicking Sign up agreed to our <Text style={{textDecorationLine:'underline'}}>Terms and Conditions</Text>
         </Text>
