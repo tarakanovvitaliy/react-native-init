@@ -6,12 +6,6 @@ export default class FormInput extends Component {
     super(props)
     this.state = {isFocus:false}
   }
-  handleFocus = () => {
-    this.setState({isFocus:true})
-  }
-  handleBlur = () => {
-    this.setState({isFocus:false})
-  }
   handleContentType = name => {
     switch (name) {
       case 'password' : return 'password'
@@ -40,8 +34,8 @@ export default class FormInput extends Component {
         keyboardType={keyboardType}
         
         onChangeText={text => onChange(text, name)}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
+        onFocus={() => this.setState({isFocus:true})}
+        onBlur={() => this.setState({isFocus:false})}
       />
     )
   }
